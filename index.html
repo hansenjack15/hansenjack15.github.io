@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jack Hansen · Projects</title>
+<meta name="description" content="Jack Hansen, computer science student at BYU. Projects: IntuitionAA, an academic planner with AI companions, and CarFlipper, a used-car flip finder with a price model.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --vellum: #EEF2F1;
+    --sheet: #FAFBFB;
+    --ink: #17293A;
+    --pencil: #4E5C68;
+    --line: #A9B8C1;
+    --redline: #B3122B;
+    --measure: 68ch;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--vellum);
+    color: var(--ink);
+    font-family: "Archivo", system-ui, sans-serif;
+    font-variation-settings: "wdth" 100;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  a { color: var(--ink); text-decoration-color: var(--redline); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+  a:hover { color: var(--redline); }
+  :focus-visible { outline: 2px solid var(--redline); outline-offset: 3px; }
+
+  .page { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  /* Hero: name set wide, with a drawing title block */
+  .hero {
+    padding: 72px 0 56px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: 48px;
+    align-items: end;
+    border-bottom: 2px solid var(--ink);
+  }
+  .name {
+    margin: 0;
+    font-size: clamp(54px, 9vw, 112px);
+    line-height: .9;
+    font-weight: 800;
+    font-variation-settings: "wdth" 125;
+    letter-spacing: -0.02em;
+  }
+  .intro { margin: 28px 0 0; max-width: 44ch; font-size: 20px; line-height: 1.45; color: var(--ink); }
+
+  .titleblock {
+    border: 2px solid var(--ink);
+    background: var(--sheet);
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    font-size: 15px;
+    line-height: 1.35;
+  }
+  .titleblock dt, .titleblock dd { margin: 0; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .titleblock dt { color: var(--pencil); border-right: 1px solid var(--line); font-variation-settings: "wdth" 85; }
+  .titleblock dd { font-weight: 600; }
+  .titleblock dt:nth-last-of-type(1), .titleblock dd:nth-last-of-type(1) { border-bottom: 0; }
+
+  /* Project sheets */
+  .project { padding: 72px 0 80px; border-bottom: 2px solid var(--ink); }
+  .project-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: baseline;
+  }
+  .project h2 {
+    margin: 0;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1;
+    font-weight: 800;
+    font-variation-settings: "wdth" 125;
+    letter-spacing: -0.015em;
+  }
+  .status { color: var(--pencil); font-size: 15px; text-align: right; }
+  .lede { margin: 20px 0 0; max-width: 36ch; font-size: 24px; line-height: 1.35; font-weight: 500; }
+
+  .body {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 64px;
+  }
+  .body h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    font-weight: 700;
+    font-variation-settings: "wdth" 110;
+    color: var(--pencil);
+  }
+  .body p { margin: 0 0 16px; max-width: var(--measure); }
+  .features { list-style: none; margin: 0 0 40px; padding: 0; max-width: var(--measure); }
+  .features li { padding: 12px 0; border-top: 1px solid var(--line); }
+  .features li:last-child { border-bottom: 1px solid var(--line); }
+  .features strong { font-weight: 700; }
+
+  /* Decisions: redline margin notes */
+  .decisions { margin: 0; padding: 0; list-style: none; max-width: var(--measure); }
+  .decisions li { position: relative; padding: 0 0 22px 22px; }
+  .decisions li::before {
+    content: ""; position: absolute; left: 0; top: .35em; bottom: 22px;
+    width: 3px; background: var(--redline);
+  }
+  .decisions li:last-child { padding-bottom: 0; }
+  .decisions li:last-child::before { bottom: 0; }
+  .decisions b { display: block; font-weight: 700; margin-bottom: 2px; }
+
+  .spec { align-self: start; border: 2px solid var(--ink); background: var(--sheet); }
+  .spec dl { margin: 0; }
+  .spec div { padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .spec div:last-child { border-bottom: 0; }
+  .spec dt { font-size: 14px; color: var(--pencil); font-variation-settings: "wdth" 85; }
+  .spec dd { margin: 2px 0 0; font-size: 15px; line-height: 1.4; }
+  .figure { font-size: 34px !important; line-height: 1.1 !important; font-weight: 800; font-variation-settings: "wdth" 120; }
+
+  /* Footer */
+  .access { padding: 64px 0 96px; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 64px; }
+  .access .titleblock { align-self: start; }
+  .access h2 { margin: 0 0 12px; font-size: 32px; font-weight: 800; font-variation-settings: "wdth" 125; line-height: 1.1; }
+  .access p { margin: 0 0 14px; max-width: var(--measure); }
+  .note { color: var(--pencil); font-size: 15px; }
+
+  @media (max-width: 900px) {
+    .hero, .body, .access { grid-template-columns: 1fr; gap: 36px; }
+    .hero { padding-top: 48px; }
+    .project { padding: 56px 0 64px; }
+    .project-head { grid-template-columns: 1fr; gap: 8px; }
+    .status { text-align: left; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .page { padding: 0 18px; }
+    .intro { font-size: 18px; }
+    .lede { font-size: 20px; }
+    .titleblock { grid-template-columns: 96px 1fr; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header class="hero">
+    <div>
+      <h1 class="name">Jack<br>Hansen</h1>
+      <p class="intro">I'm a computer science student at BYU on the machine learning track, looking for a software development internship for summer 2027. These are the two projects I've put the most into.</p>
+    </div>
+    <dl class="titleblock" aria-label="About">
+      <dt>Drawn by</dt><dd>Jack Hansen</dd>
+      <dt>School</dt><dd>Brigham Young University, Provo, Utah</dd>
+      <dt>Program</dt><dd>B.S. Computer Science, machine learning track</dd>
+      <dt>Graduating</dt><dd>April 2029</dd>
+      <dt>Looking for</dt><dd>Software development internship, summer 2027</dd>
+      <dt>GitHub</dt><dd><a href="https://github.com/hansenjack15">hansenjack15</a></dd>
+    </dl>
+  </header>
+
+  <section class="project" aria-labelledby="intuition">
+    <div class="project-head">
+      <h2 id="intuition">IntuitionAA</h2>
+      <p class="status">Deployed, invite-only alpha<br>November 2026</p>
+    </div>
+    <p class="lede">An academic planner for college students, with three AI companions that plan the week, keep the gradebook, and tutor from the student's own notes.</p>
+
+    <div class="body">
+      <div>
+        <h3>What it does</h3>
+        <ul class="features">
+          <li><strong>Clause plans the week.</strong> It ranks assignments by deadline and weight, estimates how long each will take from the student's past work sessions, and fits them around classes and Google Calendar events.</li>
+          <li><strong>Claudette keeps the grades.</strong> Weighted categories, what-if scores, and syllabus rules such as a dropped lowest quiz, plus where points can still be recovered.</li>
+          <li><strong>Clauz tutors.</strong> It answers from the student's notes and syllabus, builds practice sets, grades answers, and tracks knowledge gaps. Open gaps become review blocks in the week plan ahead of the related exam.</li>
+          <li><strong>It pulls in coursework automatically.</strong> Scheduled Canvas sync, a browser extension for BYU Learning Suite, two-way Google Calendar sync, and text recognition for photos of notes and scanned syllabi.</li>
+        </ul>
+
+        <h3>Decisions I'd defend</h3>
+        <ul class="decisions">
+          <li><b>The AI never does the math.</b> Grades, priorities, and schedules come from plain TypeScript functions with hand-checked tests. The language model is only used where the input is messy human writing, like a syllabus or a tutoring question.</li>
+          <li><b>A sync never overwrites a student's edit.</b> Each record keeps what Canvas last said and what the student changed as separate layers. When they disagree, the app asks instead of picking one.</li>
+          <li><b>Imported text is data, not instructions.</b> Syllabi and assignment text go to the model marked as untrusted, and everything the model returns is validated with Zod before it's stored.</li>
+          <li><b>AI cost has a ceiling.</b> A usage ledger records every model call, with per-student and shared spend caps, and a second AI provider can take over.</li>
+        </ul>
+      </div>
+
+      <aside class="spec" aria-label="IntuitionAA specifications">
+        <dl>
+          <div><dt>Size</dt><dd class="figure">18,000 lines</dd><dd>TypeScript, 61 commits</dd></div>
+          <div><dt>Tests</dt><dd class="figure">288</dd><dd>Vitest, focused on grade and scheduling logic</dd></div>
+          <div><dt>Stack</dt><dd>Next.js 15, React 19, TypeScript, PostgreSQL, Prisma, Auth.js with Google sign-in, Zod, Tailwind and Radix UI</dd></div>
+          <div><dt>AI</dt><dd>Anthropic Claude API, with OpenAI as a second provider</dd></div>
+          <div><dt>Structure</dt><dd>pnpm and Turborepo monorepo: one web app, one browser extension, nine packages</dd></div>
+          <div><dt>Hosting</dt><dd>Docker on Railway, with a health-checked deploy</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="project" aria-labelledby="carflipper">
+    <div class="project-head">
+      <h2 id="carflipper">CarFlipper</h2>
+      <p class="status">Personal tool, in use<br>November 2026</p>
+    </div>
+    <p class="lede">Finds used cars in Utah worth buying to resell, estimates the profit after Utah's costs, and tracks each flip from first message to sale.</p>
+
+    <div class="body">
+      <div>
+        <h3>What it does</h3>
+        <ul class="features">
+          <li><strong>One list of every listing.</strong> Cars from KSL, Facebook Marketplace, Craigslist, eBay Motors, Autotrader, AutoTempest and others land in one database, with duplicates merged across sites.</li>
+          <li><strong>A flip score for each car.</strong> Predicted Utah market value with a likely range, expected days to sell, repair reserve, Utah tax, title and emissions costs, expected profit, and the most it makes sense to pay.</li>
+          <li><strong>Known problems up front.</strong> Common failures for that make, model and year, drawn from NHTSA complaint data, are added to the risk and cost estimate.</li>
+          <li><strong>The rest of the flip.</strong> A pipeline from lead to sold, a negotiation helper, an inspection checklist, a resale listing writer, profit per car, and a warning before hitting the state's limit on private sales.</li>
+        </ul>
+
+        <h3>Decisions I'd defend</h3>
+        <ul class="decisions">
+          <li><b>No scrapers where a site forbids them.</b> Facebook, Craigslist and Autotrader listings are captured from my own browser with a Chrome extension. eBay goes through its official API. The one automatic fetch, on KSL, is opt-in, rate-limited, and stops at the first block.</li>
+          <li><b>Predict profit per day, not "good deal: yes or no".</b> Separate models for price and time to sell feed a profit calculation, so a $1,500 profit in a week ranks above $2,000 in three months.</li>
+          <li><b>Old prices are brought up to date.</b> Training data from 2020, 2021 and 2023 is adjusted to today's market with a wholesale used-car price index, since the 2021 price spike makes raw old prices misleading.</li>
+          <li><b>Real outcomes become training data.</b> What I actually paid and sold for is logged on each car and used for retraining, because completed sales beat asking prices.</li>
+        </ul>
+      </div>
+
+      <aside class="spec" aria-label="CarFlipper specifications">
+        <dl>
+          <div><dt>Price model accuracy</dt><dd class="figure">6.2%</dd><dd>median error on 280,000 held-out listings; 90% within 20%</dd></div>
+          <div><dt>Training data</dt><dd>1.4 million listings from three public used-car datasets</dd></div>
+          <div><dt>Size</dt><dd>15,000 lines, 109 tests</dd></div>
+          <div><dt>Stack</dt><dd>Python, FastAPI, SQLAlchemy with SQLite, scikit-learn gradient boosting, pandas, pytest, a Chrome extension in JavaScript</dd></div>
+          <div><dt>Data sources</dt><dd>eBay Browse API, NHTSA complaints and vehicle data, listings captured in the browser</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="access">
+    <div>
+      <h2>Reading the code</h2>
+      <p>Both repositories are private. Send me your GitHub username and I'll add you as a viewer, or I can walk through either project with you on a call.</p>
+      <p class="note">Both projects were built with Claude Code, Anthropic's AI coding tool, as a pair programmer.</p>
+    </div>
+    <dl class="titleblock" aria-label="Contact">
+      <dt>GitHub</dt><dd><a href="https://github.com/hansenjack15">github.com/hansenjack15</a></dd>
+      <dt>Location</dt><dd>Provo, Utah</dd>
+    </dl>
+  </footer>
+
+</main>
+</body>
+</html>
